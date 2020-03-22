@@ -72,7 +72,7 @@ require_once('../app/controllers/searchController.php');
                             <?php if(!empty($stockSuggestions['stockHistory'])) : ?>
                                 <div class="row">
                                     <?php if(!empty($stockSuggestions['minPrice'])) : ?>
-                                        <div class="col-lg-4 mx-auto">
+                                        <div class="col-lg-3 mx-auto">
                                             <div class="card text-white bg-success mb-3" >
                                                 <div class="card-header">BUY stocks of <b><?php echo $stockSuggestions['frmData']['companyName'] ?? ''; ?></b></div>
                                                 <div class="card-body">
@@ -84,7 +84,7 @@ require_once('../app/controllers/searchController.php');
                                     <?php endif; ?>
 
                                     <?php if(!empty($stockSuggestions['maxPrice']) && $stockSuggestions['maxPrice'] != current($stockSuggestions['stockHistory'])) : ?>
-                                        <div class="col-lg-4 mx-auto">
+                                        <div class="col-lg-3 mx-auto">
                                             <div class="card text-white bg-danger mb-3" >
                                                 <div class="card-header">SELL stocks of <b><?php echo $stockSuggestions['frmData']['companyName'] ?? ''; ?></b></div>
                                                 <div class="card-body">
@@ -94,6 +94,28 @@ require_once('../app/controllers/searchController.php');
                                             </div>
                                         </div>
                                     <?php endif; ?>
+
+                                    <?php if(!empty($stockSuggestions['meanStockValue'])) : ?>
+                                        <div class="col-lg-3 mx-auto">
+                                            <div class="card text-white bg-success mb-3" >
+                                                <div class="card-header">MEAN STOCK VALUE</div>
+                                                <div class="card-body">
+                                                    <h1 class="card-title"><?php echo number_format((float)$stockSuggestions['meanStockValue'],2); ?></h1> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if(!empty($stockSuggestions['standardDeviation'])) : ?>
+                                        <div class="col-lg-3 mx-auto">
+                                            <div class="card text-white bg-success mb-3" >
+                                                <div class="card-header">STANDARD DEVIATION</div>
+                                                <div class="card-body">
+                                                    <h1 class="card-title"><?php echo number_format((float)$stockSuggestions['standardDeviation'],2); ?></h1> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+
                                 </div>
 
                                 <div class="row">
@@ -117,7 +139,7 @@ require_once('../app/controllers/searchController.php');
                                                     $txtProfit = '';
                                                     // display buy text for the first day
                                                     if(!$stockCount) {
-                                                        $txtBuyOrSell = '<span class="text-success">BUY</span>';
+                                                        $txtBuyOrSell = '<span class="text-success">FIRST BUY</span>';
                                                         $priceBought = $stockPrice;
                                                     } else if($stockPrice == $stockSuggestions['minPrice']) {
                                                         $txtBuyOrSell = '<span class="text-success">BUY</span>';
