@@ -1,0 +1,17 @@
+{
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
+    },
+    "require": {
+        "twbs/bootstrap": "4.4.1",
+        "components/jquery": "^3.4"
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "cp -R vendor/twbs/bootstrap/dist public/bootstrap",
+            "cp -R vendor/components/jquery public/js/jquery"
+        ]
+    }
+}

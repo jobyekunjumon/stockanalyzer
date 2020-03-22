@@ -1,0 +1,26 @@
+section {
+    padding: 150px 0;
+}
+.main-container {
+    margin-top: 20px;
+}
+.pagination {
+    display: inline-block;
+}
+.pagination a {
+    border: 2px solid #2D2D2D;
+    color: black;
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    cursor: default;
+}
+ 
