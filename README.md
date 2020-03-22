@@ -1,0 +1,2 @@
+# stockanalyzer
+Assignmet
