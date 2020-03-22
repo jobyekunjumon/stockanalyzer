@@ -8,7 +8,7 @@ class Fileprocessor {
     /**
      * Allowed file types
      */
-    const ALLOWED_FILE_TYPES = ['text/csv'];
+    const ALLOWED_FILE_TYPES = ['csv'];
 
     /**
      * UI Object
@@ -69,7 +69,7 @@ class Fileprocessor {
             $validationErrors = 'Stock Value History file is empty.';
         } else if(empty($data['stockValueHistory']['size'])) {
             $validationErrors = 'Stock Value History file is empty.';
-        } else if(!in_array($data['stockValueHistory']['type'], self::ALLOWED_FILE_TYPES)) {
+        } else if(!in_array(pathinfo($data['stockValueHistory']['name'], PATHINFO_EXTENSION), self::ALLOWED_FILE_TYPES)) {
             $validationErrors = 'File format is not supported.';
         } // end: if
 

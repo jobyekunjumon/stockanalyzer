@@ -33,7 +33,7 @@ class Stockanalyser {
             $post = $request->getPost();
             // sanitize input data
             $cleanData = $this->sanitizeInputData($post);
-            
+
             // assign cleaned data to the frmData variable to populate in form fields in view
             $suggestions['frmData'] = $cleanData;
             $validationErrors = $this->validateRequest($post);
@@ -41,7 +41,10 @@ class Stockanalyser {
                 $this->ui->setErrorMessage($validationErrors);
             } else { 
                 try {
+                    // get stock details from local storage
                     $stockDetails = $this->getStockDetails();
+                    // change the case of company name, if it is typed case insensitive
+                    $cleanData['companyName'] = strtoupper($cleanData['companyName']);
                     // check if stock name exist
                     if(!empty($stockDetails[$cleanData['companyName']])) {
                         // soryt stocks by date
